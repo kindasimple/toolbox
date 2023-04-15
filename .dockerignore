@@ -1,0 +1,10 @@
+# dotfiles
+.dockerignore
+.github/
+
+# files in root directory
+Dockerfile
+LICENSE
+README.md
+
+# folders

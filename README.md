@@ -1,6 +1,8 @@
 toolbox
 =======
 
+![](toolbox-logo.png)
+
 Docker image that packages common build tools for python
 
 

@@ -1,4 +1,7 @@
-FROM python:slim-bullseye as base
+ARG BUILD_PLATFORM=x86_64
+FROM --platform=linux/$BUILD_PLATFORM python:slim-bullseye as base
+
+ARG BUILD_PLATFORM
 
 LABEL org.opencontainers.image.authors="@kindasimple" \
       org.opencontainers.image.source="https://github.com/kindasimple/toolbox" \
@@ -20,7 +23,7 @@ RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir \
     pytest \
     tox
 
-RUN wget --progress=dot:giga https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-arm64 -O /usr/local/bin/hadolint && \
+RUN wget --progress=dot:giga https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-${BUILD_PLATFORM} -O /usr/local/bin/hadolint && \
           chmod +x /usr/local/bin/hadolint
 
 WORKDIR /src

@@ -13,8 +13,8 @@ jobs:
       uses: hadolint/hadolint-action@master
       with:
         dockerfile: "Dockerfile"
-        config: .config/hadolint.yaml
+        config: ./.config/hadolint.yaml
     - name: Build Docker image
-      run: docker build -t toolbox .
+      run: docker build --build-arg BUILD_PLATFORM=x86_64 -t toolbox .
     - name: Run Docker image
       run: docker run -v $PWD/Dockerfile:/src/Dockerfile toolbox hadolint Dockerfile
